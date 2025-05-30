@@ -1,0 +1,820 @@
+<t t-name="website.temp3">
+    <t t-call="website.layout">
+        <div id="wrap" class="oe_structure oe_empty"><section class="s_embed_code o_colored_level pt0 pb56 text-center" data-snippet="s_embed_code" data-name="Code intégré">
+        <template class="s_embed_code_saved"><style>
+    /* Variables de couleurs */
+    :root {
+        --white: #FCFCFC;
+        --dark: #212125;
+        --blue-gray: #4E6D88;
+        --primary: #0055FF;
+        --light-gray: #A5B3C5;
+        --bg-light: #E0E8F4;
+        --shadow: 0 10px 30px rgba(33, 33, 37, 0.08);
+        --transition: all 0.3s ease;
+    }
+
+    /* Import de polices */
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap');
+
+    /* Styles pour la section calendrier */
+    .calendar-section {
+        padding: 30px 15px;
+        background-color: var(--white);
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .calendar-section-inner {
+        background-color: var(--bg-light);
+        border-radius: 16px;
+        padding: 40px 20px;
+        box-shadow: var(--shadow);
+        position: relative;
+        z-index: 1;
+        animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+        font-family: 'Nunito', sans-serif;
+        font-size: 48px;
+        color: var(--dark);
+        margin-bottom: 12px;
+        font-weight: 800;
+        letter-spacing: 0;
+        animation: slideDown 0.5s ease-out forwards;
+        line-height: 1.1;
+    }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header p {
+        color: var(--blue-gray);
+        font-size: 18px;
+        max-width: 600px;
+        margin: 0 auto;
+        animation: fadeIn 0.8s ease-out 0.2s forwards;
+        opacity: 0;
+    }
+
+    .accent-text {
+        color: var(--primary);
+        position: relative;
+    }
+
+    .accent-text::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: var(--primary);
+        opacity: 0.2;
+        border-radius: 2px;
+    }
+
+    /* Calendrier */
+    .calendar-container {
+        background-color: var(--white);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        margin-top: 40px;
+        transition: var(--transition);
+        animation: scaleIn 0.6s ease-out 0.3s forwards;
+        opacity: 0;
+        transform: scale(0.98);
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #my-cal-inline {
+        width: 100%;
+        min-height: 600px;
+        overflow: visible;
+    }
+
+    /* Contenu du calendrier */
+    #my-cal-inline &gt; div {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    /* Styles pour les iframes générées par Cal.com */
+    #my-cal-inline iframe {
+        width: 100% !important;
+        min-height: 600px !important;
+        border: none !important;
+    }
+
+    @keyframes scaleIn {
+        from { opacity: 0; transform: scale(0.98); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .calendar-container:hover {
+        box-shadow: 0 15px 40px rgba(33, 33, 37, 0.12);
+    }
+
+    .info-box {
+        margin-top: 30px;
+        background-color: var(--white);
+        border-left: 4px solid var(--primary);
+        padding: 20px;
+        border-radius: 0 8px 8px 0;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        animation: slideIn 0.6s ease-out 0.5s forwards;
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(-10px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .info-box:hover {
+        transform: translateX(3px);
+        box-shadow: 0 8px 20px rgba(33, 33, 37, 0.1);
+    }
+
+    .info-box h3 {
+        color: var(--dark);
+        font-size: 18px;
+        margin-bottom: 8px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+    }
+
+    .info-box p {
+        color: var(--blue-gray);
+        margin: 0;
+    }
+
+    /* Nouveau container CTA avec animation d'apparition au scroll */
+    .cta-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .cta-container.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Animation pour le bouton */
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(0, 85, 255, 0.4); }
+        70% { box-shadow: 0 0 0 15px rgba(0, 85, 255, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(0, 85, 255, 0); }
+    }
+
+    .cta-button {
+        padding: 16px 32px;
+        background-color: var(--primary);
+        color: var(--white);
+        border-radius: 8px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: var(--transition);
+        display: inline-block;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        letter-spacing: 0.5px;
+    }
+
+    .cta-button.visible {
+        animation: pulse 2s infinite;
+    }
+
+    .cta-button:hover {
+        background-color: #0044cc;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 85, 255, 0.3);
+    }
+
+    .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: var(--transition);
+        z-index: -1;
+    }
+
+    .cta-button:hover::before {
+        left: 100%;
+        transition: 0.8s;
+    }
+
+    /* Styles responsives */
+    @media (max-width: 768px) {
+        .calendar-section {
+            padding: 20px 10px;
+        }
+        
+        .calendar-section-inner {
+            padding: 25px 15px;
+        }
+        
+        .section-header h2 {
+            font-size: 32px;
+        }
+        
+        .section-header p {
+            font-size: 16px;
+        }
+        
+        #my-cal-inline,
+        #my-cal-inline iframe {
+            min-height: 500px !important;
+        }
+        
+        .cta-button {
+            padding: 14px 28px;
+        }
+    }
+
+    /* Très petits écrans */
+    @media (max-width: 480px) {
+        .calendar-section-inner {
+            padding: 20px 12px;
+        }
+        
+        .section-header h2 {
+            font-size: 28px;
+        }
+        
+        #my-cal-inline,
+        #my-cal-inline iframe {
+            min-height: 450px !important;
+        }
+        
+        .info-box {
+            padding: 15px;
+        }
+        
+        .cta-button {
+            padding: 12px 24px;
+            font-size: 15px;
+        }
+    }
+</style>
+
+<section class="calendar-section">
+    <div class="calendar-section-inner">
+        <div class="section-header">
+            <h2>Prenez <span class="accent-text">rendez-vous</span></h2>
+            <p>Sélectionnez une date et un horaire dans notre calendrier pour planifier votre consultation personnalisée.</p>
+        </div>
+        
+        <div class="calendar-container">
+            <div id="my-cal-inline"/>
+            <script type="text/javascript">
+              (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+            Cal("init", "meeting", {origin:"https://cal.com"});
+              Cal.ns.meeting("inline", {
+                elementOrSelector:"#my-cal-inline",
+                config: {"layout":"month_view","theme":"light"},
+                calLink: "chantierfilm/meeting",
+              });
+              Cal.ns.meeting("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-brand":"#fcfcfc"},"dark":{"cal-brand":"#212125"}},"hideEventTypeDetails":false,"layout":"month_view"});
+            </script>
+        </div>
+        
+        <div class="info-box">
+            <h3>Besoin d'aide pour choisir un créneau ?</h3>
+            <p>Notre équipe est à votre disposition pour vous accompagner dans votre projet. N'hésitez pas à nous contacter directement si vous avez des questions spécifiques.</p>
+        </div>
+        
+        <div class="cta-container" id="contact-cta">
+            <a href="mailto:contact@nuitblancheproduction.com" class="cta-button" id="contact-button" onclick="changeButtonText(event)">Nous contacter</a>
+        </div>
+        
+        <script>
+            // Fonction pour changer le texte du bouton
+            function changeButtonText(event) {
+                // Empêche le comportement par défaut
+                event.preventDefault();
+                
+                const button = document.getElementById('contact-button');
+                const emailAddress = 'contact@nuitblancheproduction.com';
+                
+                // Change le texte du bouton
+                button.textContent = emailAddress;
+                
+                // Ajuste la taille du bouton
+                button.style.minWidth = 'max-content';
+                button.style.padding = '14px 20px';
+                
+                // Délai avant d'ouvrir l'application de messagerie
+                setTimeout(() =&gt; {
+                    window.location.href = 'mailto:' + emailAddress;
+                }, 500);
+            }
+            
+            // Observer d'intersection pour l'animation au scroll
+            document.addEventListener('DOMContentLoaded', function() {
+                // Observer pour le CTA
+                const ctaObserver = new IntersectionObserver((entries) =&gt; {
+                    entries.forEach(entry =&gt; {
+                        if (entry.isIntersecting) {
+                            const ctaContainer = document.getElementById('contact-cta');
+                            const ctaButton = document.getElementById('contact-button');
+                            
+                            ctaContainer.classList.add('visible');
+                            ctaButton.classList.add('visible');
+                            
+                            // Arrêter l'observation une fois l'animation déclenchée
+                            ctaObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.2 // Déclenche quand 20% de l'élément est visible
+                });
+                
+                const ctaElement = document.getElementById('contact-cta');
+                if (ctaElement) {
+                    ctaObserver.observe(ctaElement);
+                }
+                
+                // Observer pour détecter quand l'iframe est insérée
+                const calObserver = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.addedNodes.length &gt; 0) {
+                            const iframes = document.querySelectorAll('#my-cal-inline iframe');
+                            if (iframes.length &gt; 0) {
+                                iframes.forEach(iframe =&gt; {
+                                    iframe.style.width = '100%';
+                                    if (window.innerWidth &lt;= 768) {
+                                        iframe.style.minHeight = '500px';
+                                    } else {
+                                        iframe.style.minHeight = '600px';
+                                    }
+                                });
+                                // Arrêter l'observation
+                                calObserver.disconnect();
+                            }
+                        }
+                    });
+                });
+                
+                // Observer le conteneur du calendrier
+                const calContainer = document.getElementById('my-cal-inline');
+                if (calContainer) {
+                    calObserver.observe(calContainer, { childList: true, subtree: true });
+                }
+                
+                // Ajuster lors du redimensionnement
+                window.addEventListener('resize', function() {
+                    const iframes = document.querySelectorAll('#my-cal-inline iframe');
+                    iframes.forEach(iframe =&gt; {
+                        iframe.style.width = '100%';
+                        if (window.innerWidth &lt;= 768) {
+                            iframe.style.minHeight = '500px';
+                        } else {
+                            iframe.style.minHeight = '600px';
+                        }
+                    });
+                });
+            });
+        </script>
+    </div>
+</section></template>
+        <div class="s_embed_code_embedded o_not_editable container-fluid"><style>
+    /* Variables de couleurs */
+    :root {
+        --white: #FCFCFC;
+        --dark: #212125;
+        --blue-gray: #4E6D88;
+        --primary: #0055FF;
+        --light-gray: #A5B3C5;
+        --bg-light: #E0E8F4;
+        --shadow: 0 10px 30px rgba(33, 33, 37, 0.08);
+        --transition: all 0.3s ease;
+    }
+
+    /* Import de polices */
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap');
+
+    /* Styles pour la section calendrier */
+    .calendar-section {
+        padding: 30px 15px;
+        background-color: var(--white);
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .calendar-section-inner {
+        background-color: var(--bg-light);
+        border-radius: 16px;
+        padding: 40px 20px;
+        box-shadow: var(--shadow);
+        position: relative;
+        z-index: 1;
+        animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+        font-family: 'Nunito', sans-serif;
+        font-size: 48px;
+        color: var(--dark);
+        margin-bottom: 12px;
+        font-weight: 800;
+        letter-spacing: 0;
+        animation: slideDown 0.5s ease-out forwards;
+        line-height: 1.1;
+    }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header p {
+        color: var(--blue-gray);
+        font-size: 18px;
+        max-width: 600px;
+        margin: 0 auto;
+        animation: fadeIn 0.8s ease-out 0.2s forwards;
+        opacity: 0;
+    }
+
+    .accent-text {
+        color: var(--primary);
+        position: relative;
+    }
+
+    .accent-text::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: var(--primary);
+        opacity: 0.2;
+        border-radius: 2px;
+    }
+
+    /* Calendrier */
+    .calendar-container {
+        background-color: var(--white);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        margin-top: 40px;
+        transition: var(--transition);
+        animation: scaleIn 0.6s ease-out 0.3s forwards;
+        opacity: 0;
+        transform: scale(0.98);
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #my-cal-inline {
+        width: 100%;
+        min-height: 600px;
+        overflow: visible;
+    }
+
+    /* Contenu du calendrier */
+    #my-cal-inline &gt; div {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    /* Styles pour les iframes générées par Cal.com */
+    #my-cal-inline iframe {
+        width: 100% !important;
+        min-height: 600px !important;
+        border: none !important;
+    }
+
+    @keyframes scaleIn {
+        from { opacity: 0; transform: scale(0.98); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .calendar-container:hover {
+        box-shadow: 0 15px 40px rgba(33, 33, 37, 0.12);
+    }
+
+    .info-box {
+        margin-top: 30px;
+        background-color: var(--white);
+        border-left: 4px solid var(--primary);
+        padding: 20px;
+        border-radius: 0 8px 8px 0;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        animation: slideIn 0.6s ease-out 0.5s forwards;
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(-10px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .info-box:hover {
+        transform: translateX(3px);
+        box-shadow: 0 8px 20px rgba(33, 33, 37, 0.1);
+    }
+
+    .info-box h3 {
+        color: var(--dark);
+        font-size: 18px;
+        margin-bottom: 8px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+    }
+
+    .info-box p {
+        color: var(--blue-gray);
+        margin: 0;
+    }
+
+    /* Nouveau container CTA avec animation d'apparition au scroll */
+    .cta-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .cta-container.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Animation pour le bouton */
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(0, 85, 255, 0.4); }
+        70% { box-shadow: 0 0 0 15px rgba(0, 85, 255, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(0, 85, 255, 0); }
+    }
+
+    .cta-button {
+        padding: 16px 32px;
+        background-color: var(--primary);
+        color: var(--white);
+        border-radius: 8px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: var(--transition);
+        display: inline-block;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        letter-spacing: 0.5px;
+    }
+
+    .cta-button.visible {
+        animation: pulse 2s infinite;
+    }
+
+    .cta-button:hover {
+        background-color: #0044cc;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 85, 255, 0.3);
+    }
+
+    .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: var(--transition);
+        z-index: -1;
+    }
+
+    .cta-button:hover::before {
+        left: 100%;
+        transition: 0.8s;
+    }
+
+    /* Styles responsives */
+    @media (max-width: 768px) {
+        .calendar-section {
+            padding: 20px 10px;
+        }
+        
+        .calendar-section-inner {
+            padding: 25px 15px;
+        }
+        
+        .section-header h2 {
+            font-size: 32px;
+        }
+        
+        .section-header p {
+            font-size: 16px;
+        }
+        
+        #my-cal-inline,
+        #my-cal-inline iframe {
+            min-height: 500px !important;
+        }
+        
+        .cta-button {
+            padding: 14px 28px;
+        }
+    }
+
+    /* Très petits écrans */
+    @media (max-width: 480px) {
+        .calendar-section-inner {
+            padding: 20px 12px;
+        }
+        
+        .section-header h2 {
+            font-size: 28px;
+        }
+        
+        #my-cal-inline,
+        #my-cal-inline iframe {
+            min-height: 450px !important;
+        }
+        
+        .info-box {
+            padding: 15px;
+        }
+        
+        .cta-button {
+            padding: 12px 24px;
+            font-size: 15px;
+        }
+    }
+</style><section class="calendar-section">
+    <div class="calendar-section-inner">
+        <div class="section-header">
+            <h2>Prenez <span class="accent-text">rendez-vous</span></h2>
+            <p>Sélectionnez une date et un horaire dans notre calendrier pour planifier votre consultation personnalisée.</p>
+        </div>
+        
+        <div class="calendar-container">
+            <div id="my-cal-inline"/>
+            <script type="text/javascript">
+              (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+            Cal("init", "meeting", {origin:"https://cal.com"});
+              Cal.ns.meeting("inline", {
+                elementOrSelector:"#my-cal-inline",
+                config: {"layout":"month_view","theme":"light"},
+                calLink: "chantierfilm/meeting",
+              });
+              Cal.ns.meeting("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-brand":"#fcfcfc"},"dark":{"cal-brand":"#212125"}},"hideEventTypeDetails":false,"layout":"month_view"});
+            </script>
+        </div>
+        
+        <div class="info-box">
+            <h3>Besoin d'aide pour choisir un créneau ?</h3>
+            <p>Notre équipe est à votre disposition pour vous accompagner dans votre projet. N'hésitez pas à nous contacter directement si vous avez des questions spécifiques.</p>
+        </div>
+        
+        <div class="cta-container" id="contact-cta">
+            <a href="mailto:contact@nuitblancheproduction.com" class="cta-button" id="contact-button" onclick="changeButtonText(event)">Nous contacter</a>
+        </div>
+        
+        <script>
+            // Fonction pour changer le texte du bouton
+            function changeButtonText(event) {
+                // Empêche le comportement par défaut
+                event.preventDefault();
+                
+                const button = document.getElementById('contact-button');
+                const emailAddress = 'contact@nuitblancheproduction.com';
+                
+                // Change le texte du bouton
+                button.textContent = emailAddress;
+                
+                // Ajuste la taille du bouton
+                button.style.minWidth = 'max-content';
+                button.style.padding = '14px 20px';
+                
+                // Délai avant d'ouvrir l'application de messagerie
+                setTimeout(() =&gt; {
+                    window.location.href = 'mailto:' + emailAddress;
+                }, 500);
+            }
+            
+            // Observer d'intersection pour l'animation au scroll
+            document.addEventListener('DOMContentLoaded', function() {
+                // Observer pour le CTA
+                const ctaObserver = new IntersectionObserver((entries) =&gt; {
+                    entries.forEach(entry =&gt; {
+                        if (entry.isIntersecting) {
+                            const ctaContainer = document.getElementById('contact-cta');
+                            const ctaButton = document.getElementById('contact-button');
+                            
+                            ctaContainer.classList.add('visible');
+                            ctaButton.classList.add('visible');
+                            
+                            // Arrêter l'observation une fois l'animation déclenchée
+                            ctaObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.2 // Déclenche quand 20% de l'élément est visible
+                });
+                
+                const ctaElement = document.getElementById('contact-cta');
+                if (ctaElement) {
+                    ctaObserver.observe(ctaElement);
+                }
+                
+                // Observer pour détecter quand l'iframe est insérée
+                const calObserver = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.addedNodes.length &gt; 0) {
+                            const iframes = document.querySelectorAll('#my-cal-inline iframe');
+                            if (iframes.length &gt; 0) {
+                                iframes.forEach(iframe =&gt; {
+                                    iframe.style.width = '100%';
+                                    if (window.innerWidth &lt;= 768) {
+                                        iframe.style.minHeight = '500px';
+                                    } else {
+                                        iframe.style.minHeight = '600px';
+                                    }
+                                });
+                                // Arrêter l'observation
+                                calObserver.disconnect();
+                            }
+                        }
+                    });
+                });
+                
+                // Observer le conteneur du calendrier
+                const calContainer = document.getElementById('my-cal-inline');
+                if (calContainer) {
+                    calObserver.observe(calContainer, { childList: true, subtree: true });
+                }
+                
+                // Ajuster lors du redimensionnement
+                window.addEventListener('resize', function() {
+                    const iframes = document.querySelectorAll('#my-cal-inline iframe');
+                    iframes.forEach(iframe =&gt; {
+                        iframe.style.width = '100%';
+                        if (window.innerWidth &lt;= 768) {
+                            iframe.style.minHeight = '500px';
+                        } else {
+                            iframe.style.minHeight = '600px';
+                        }
+                    });
+                });
+            });
+        </script>
+    </div>
+</section></div>
+    </section></div>
+    </t>
+</t>

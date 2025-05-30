@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chantier Film - Immortalisez Votre Chantier en Vidéo</title>
+    <meta name="description" content="Capturation professionnelle de chantiers avec drone et timelapse. Documentation complète et suivi en temps réel.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS personnalisé sera ajouté ici -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- Section Header / Hero -->
+    <section class="header_section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12">
+                    <div class="header_content">
+                        <h1 class="main_title animate-element">
+                            <div class="title-container">
+                                <span class="title-main">Immortalisez Votre Chantier</span>
+                                <span class="title-accent">en Vidéo</span>
+                            </div>
+                        </h1>
+                        <p class="subtitle animate-element">
+                            Capturez chaque détail de votre chantier avec un reportage complet, incluant drone et timelapse, et créez une identité visuelle distincte.
+                        </p>
+                        
+                        <ul class="features_list">
+                            <li class="animate-feature">
+                                <i class="fa fa-check-circle"></i>
+                                Documentation continue
+                            </li>
+                            <li class="animate-feature">
+                                <i class="fa fa-check-circle"></i>
+                                Perspectives aériennes spectaculaires
+                            </li>
+                            <li class="animate-feature">
+                                <i class="fa fa-check-circle"></i>
+                                Suivi détaillé en temps réel
+                            </li>
+                        </ul>
+                        
+                        <div class="testimonial-carousel animate-element" id="testimonial-carousel">
+                            <div class="stars">★★★★★</div>
+                            <div class="testimonial-slider">
+                                <div class="testimonial-slide active">
+                                    <p class="testimonial-text">"Une équipe d'un grand professionnalisme, à l'écoute de nos besoins et toujours disponible pour ajuster les moindres détails. La qualité est au rendez-vous !"</p>
+                                </div>
+                                <div class="testimonial-slide">
+                                    <p class="testimonial-text">"Un investissement qui en valait largement la peine ! Nos clients et partenaires adorent suivre notre évolution grâce à ces vidéos. Merci encore pour ce travail d'orfèvre !"</p>
+                                </div>
+                                <div class="testimonial-slide">
+                                    <p class="testimonial-text">"Le suivi en timelapse est d'une précision remarquable, et les reportages intermédiaires sont un vrai plus pour notre communication interne et externe."</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-dots">
+                                <span class="dot active" data-slide="0"></span>
+                                <span class="dot" data-slide="1"></span>
+                                <span class="dot" data-slide="2"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-12">
+                    <div class="header_image animate-image">
+                        <div class="placeholder_image">
+                            <img src="https://www.chantierfilm.com/web/image/850-1261c997/21.jpg" 
+                                 alt="Suivi de chantier en images – Timelapse et photographie pro" 
+                                 class="img-fluid" 
+                                 loading="lazy">
+                        </div>
+                        <div class="floating-element drone-icon">
+                            <i class="fa fa-drone"></i>
+                        </div>
+                        <div class="floating-element camera-icon">
+                            <i class="fa fa-video"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="cta_container text-center">
+                        <a href="https://www.chantierfilm.com/prise-de-rendez-vous" class="btn cta_button pulse-animation">
+                            Réservez un Rendez-vous
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="background-element line-1"></div>
+    </section>
+
+    <!-- Section Problématiques -->
+    <section class="problematiques_section">
+        <div class="container">
+            <div class="section_header text-center">
+                <h2 class="section_title animate-section">Pourquoi une meilleure documentation est essentielle ?</h2>
+                <p class="section_subtitle animate-section">Les défis rencontrés sur vos chantiers</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="introduction_box animate-section">
+                        <p class="introduction_text">
+                            Les chantiers de construction présentent de nombreux défis. Sans une documentation visuelle adéquate, la gestion du projet peut devenir complexe.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5 flex-column flex-lg-row">
+                <!-- Colonne des défis -->
+                <div class="col-12 col-lg-6 problems-column">
+                    <h3 class="challenges_title animate-section">Les défis quotidiens</h3>
+                    
+                    <div class="challenge_card animate-card">
+                        <div class="challenge_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>
+                            </svg>
+                        </div>
+                        <div class="challenge_content">
+                            <h4>Manque de visibilité sur l'avancement</h4>
+                            <p>Difficile d'évaluer précisément l'état du chantier et de suivre son évolution sans un historique détaillé.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge_card animate-card">
+                        <div class="challenge_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                        </div>
+                        <div class="challenge_content">
+                            <h4>Communication complexe entre équipes</h4>
+                            <p>Un partage d'informations incomplet entraîne des malentendus, des pertes de temps et un manque de coordination.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge_card animate-card">
+                        <div class="challenge_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z"></path>
+                            </svg>
+                        </div>
+                        <div class="challenge_content">
+                            <h4>Absence de preuves concrètes</h4>
+                            <p>Impossible de démontrer l'avancement des travaux de manière fiable sans support visuel clair et structuré.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge_card animate-card">
+                        <div class="challenge_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                            </svg>
+                        </div>
+                        <div class="challenge_content">
+                            <h4>Données mal organisées et peu accessibles</h4>
+                            <p>Les documents et archives du projet sont dispersés, rendant leur consultation lente et peu efficace.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge_card animate-card">
+                        <div class="challenge_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="challenge_content">
+                            <h4>Retards difficiles à anticiper</h4>
+                            <p>Sans outil de suivi adapté, détecter les écarts au planning et réagir rapidement devient très compliqué.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Colonne des solutions -->
+                <div class="col-12 col-lg-6 solutions-column">
+                    <h3 class="solutions_title animate-section">Notre solution</h3>
+                    
+                    <div class="solution_card animate-solution">
+                        <div class="solution_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="solution_content">
+                            <h4>Un suivi visuel immersif</h4>
+                            <p>Accédez en un clic à un timelapse détaillé et suivez l'évolution du projet avec une vue globale et précise.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="solution_card animate-solution">
+                        <div class="solution_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="solution_content">
+                            <h4>Une communication simplifiée</h4>
+                            <p>Partagez des mises à jour engageantes avec des vidéos claires qui améliorent l'échange entre toutes les parties.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="solution_card animate-solution">
+                        <div class="solution_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
+                            </svg>
+                        </div>
+                        <div class="solution_content">
+                            <h4>Des preuves visuelles impactantes</h4>
+                            <p>Documentez chaque phase du chantier avec des images et vidéos valorisant l'expertise et le travail réalisé.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="solution_card animate-solution">
+                        <div class="solution_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                        </div>
+                        <div class="solution_content">
+                            <h4>Un archivage structuré et sécurisé</h4>
+                            <p>Regroupez tous vos fichiers dans un espace centralisé pour retrouver facilement chaque étape du projet.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="solution_card animate-solution">
+                        <div class="solution_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                            </svg>
+                        </div>
+                        <div class="solution_content">
+                            <h4>Un contrôle précis des délais</h4>
+                            <p>Analysez chaque phase avec des outils visuels performants pour détecter et corriger les écarts immédiatement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="background-element dots-1"></div>
+    </section>
+
+    <!-- Section Notre Offre -->
+    <section id="notre_offre" class="of_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="of_section_title of_animate">Notre Offre</h2>
+                    <p class="of_section_subtitle of_animate">
+                        En choisissant Chantier Film, vous optez pour un partenaire qui valorise chaque détail de votre projet, transformant votre chantier en une histoire visuelle captivante et professionnelle.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row of_service_cards">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="of_service_card of_animate_card" data-delay="0">
+                        <div class="of_card_icon">
+                            <div class="of_icon_wrapper">
+                                <i class="fa fa-film"></i>
+                            </div>
+                        </div>
+                        <h3 class="of_card_title">Reportage Complet de Chantier</h3>
+                        <p class="of_card_description">
+                            Nous réalisons une captation complète de votre projet, du premier coup de pelle jusqu'à la livraison finale. Grâce à une combinaison de prises de vue au sol, aériennes et en timelapse, nous créons un récit visuel impactant qui met en valeur votre savoir-faire et l'évolution du chantier.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="of_service_card of_animate_card" data-delay="200">
+                        <div class="of_card_icon">
+                            <div class="of_icon_wrapper">
+                                <i class="fa fa-video-camera"></i>
+                            </div>
+                        </div>
+                        <h3 class="of_card_title">Timelapse Professionnel</h3>
+                        <p class="of_card_description">
+                            Nos caméras timelapse enregistrent l'évolution de votre chantier en continu, offrant une vision accélérée et détaillée des travaux. Un outil puissant pour suivre les progrès, valoriser votre projet et communiquer efficacement avec vos équipes et clients.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="of_service_card of_animate_card" data-delay="400">
+                        <div class="of_card_icon">
+                            <div class="of_icon_wrapper">
+                                <i class="fa fa-cloud"></i>
+                            </div>
+                        </div>
+                        <h3 class="of_card_title">Accès à Distance en Temps Réel</h3>
+                        <p class="of_card_description">
+                            Surveillez l'évolution de votre chantier où que vous soyez ! Nos systèmes de caméras connectées transmettent en temps réel des images sécurisées accessibles via une plateforme dédiée. Un moyen efficace d'optimiser le suivi du projet et de partager les avancées avec vos partenaires.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="of_background_dots"></div>
+    </section>
+
+    <!-- Section Avant/Après -->
+    <section class="before_after_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="comparison_container animate-element">
+                        <div class="comparison_wrapper">
+                            <div class="comparison_before">
+                                <img src="https://www.chantierfilm.com/web/image/896-95e8f7e2/2-AFTER.webp" 
+                                     alt="Évolution des travaux de construction en images" 
+                                     class="img-fluid" 
+                                     loading="lazy">
+                            </div>
+                            <div class="comparison_after">
+                                <img src="https://www.chantierfilm.com/web/image/897-1fc55ddd/1-BEFORE.webp" 
+                                     alt="Vue avant chantier – Documentation des premières étapes de construction" 
+                                     class="img-fluid" 
+                                     loading="lazy">
+                            </div>
+                            
+                            <div class="label_container">
+                                <div class="label before_label">AVANT</div>
+                                <div class="label after_label">APRÈS</div>
+                            </div>
+                            
+                            <div class="comparison_slider">
+                                <div class="slider_button">
+                                    <i class="fa fa-chevron-left"></i>
+                                    <i class="fa fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Processus -->
+    <section class="cf_process_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="cf_section_title cf_animate-process">
+                        <span class="cf_title-main">Processus de</span>
+                        <span class="cf_title-accent">Collaboration</span>
+                    </h2>
+                    <p class="cf_section_subtitle cf_animate-process">
+                        Chez Chantier Film, nous simplifions la gestion de votre projet de construction en prenant en charge l'intégralité du processus de documentation visuelle. Voici comment nous travaillons ensemble :
+                    </p>
+                </div>
+            </div>
+
+            <div class="cf_process_path">
+                <div class="cf_process_step cf_step-left cf_animate-process">
+                    <div class="cf_step_content">
+                        <div class="cf_step_number">1</div>
+                        <h3 class="cf_step_title">Consultation Initiale</h3>
+                        <p class="cf_step_description">
+                            Nous débutons par un échange afin de comprendre vos besoins, les spécificités de votre chantier et vos objectifs. Cette première étape permet d'adapter notre prestation à vos contraintes techniques et à l'image que vous souhaitez transmettre.
+                        </p>
+                    </div>
+                    <div class="cf_step_connector">
+                        <div class="cf_step_icon">
+                            <i class="fa fa-comments"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cf_process_step cf_step-right cf_animate-process">
+                    <div class="cf_step_connector">
+                        <div class="cf_step_icon">
+                            <i class="fa fa-building"></i>
+                        </div>
+                    </div>
+                    <div class="cf_step_content">
+                        <div class="cf_step_number">2</div>
+                        <h3 class="cf_step_title">Installation rapide et optimisée</h3>
+                        <p class="cf_step_description">
+                            Notre équipe planifie l'installation des caméras de timelapse, et les premières prises d'images avec nos drones et caméras au sol. Nous obtenons toutes les autorisations nécessaires pour le survol des drones et plaçons les équipements de manière stratégique pour une couverture optimale.
+                        </p>
+                        <p class="cf_step_description">
+                            Installation rapide et efficace, souvent en moins de 48 heures, avec des caméras solaires autonomes pour minimiser les besoins en maintenance.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cf_process_step cf_step-left cf_animate-process">
+                    <div class="cf_step_content">
+                        <div class="cf_step_number">3</div>
+                        <h3 class="cf_step_title">Captation et suivi en temps réel</h3>
+                        <p class="cf_step_description">
+                            Nous capturons en continu les images et vidéos de votre chantier. Nos caméras de timelapse prennent des photos à intervalles réguliers, les drones fournissent des vues aériennes spectaculaires, et les caméras au sol documentent les détails critiques.
+                        </p>
+                        <p class="cf_step_description">
+                            Les données sont transmises en temps réel à un cloud sécurisé, vous permettant de suivre l'avancement des travaux à distance via notre portail en ligne.
+                        </p>
+                    </div>
+                    <div class="cf_step_connector">
+                        <div class="cf_step_icon">
+                            <i class="fa fa-camera"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cf_process_step cf_step-right cf_animate-process">
+                    <div class="cf_step_connector">
+                        <div class="cf_step_icon">
+                            <i class="fa fa-film"></i>
+                        </div>
+                    </div>
+                    <div class="cf_step_content">
+                        <div class="cf_step_number">4</div>
+                        <h3 class="cf_step_title">Montage et Post-Production</h3>
+                        <p class="cf_step_description">
+                            Nous assemblons les séquences capturées pour créer des vidéos de haute qualité qui illustrent clairement l'évolution de votre chantier. Nous intégrons des éléments graphiques et des annotations selon vos besoins.
+                        </p>
+                        <p class="cf_step_description">
+                            Vous avez un accès illimité aux images capturées et pouvez demander un nombre illimité de modifications de montage pour que le résultat final reflète parfaitement votre vision.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cf_process_step cf_step-left cf_animate-process">
+                    <div class="cf_step_content">
+                        <div class="cf_step_number">5</div>
+                        <h3 class="cf_step_title">Livraison et Suivi</h3>
+                        <p class="cf_step_description">
+                            Nous vous remettons un reportage complet, prêt à être utilisé pour vos présentations, votre communication interne et externe, ou encore votre marketing.
+                        </p>
+                        <p class="cf_step_description">
+                            <strong>Vous n'avez à vous soucier de rien : nous gérons tout pour vous.</strong> De la planification initiale à la livraison finale, notre équipe s'occupe de chaque détail, vous permettant de vous concentrer sur la réalisation de votre projet.
+                        </p>
+                    </div>
+                    <div class="cf_step_connector">
+                        <div class="cf_step_icon">
+                            <i class="fa fa-check-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="cf_conclusion_text cf_animate-process">
+                        En collaborant avec Chantier Film, vous bénéficiez d'un service clé en main qui garantit une documentation visuelle précise et professionnelle de votre chantier, renforçant ainsi votre image de marque et facilitant la gestion de votre projet.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA / Contact -->
+    <section class="cta_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="cta_wrapper animate-element">
+                        <div class="cta_content">
+                            <h2 class="cta_title">
+                                <span class="title-main">Transformez Votre Projet</span>
+                                <span class="title-accent">en Histoire Visuelle</span>
+                            </h2>
+                            <p class="cta_description">
+                                Chaque chantier raconte une histoire unique. Laissez-nous capturer la vôtre avec une qualité cinématographique qui impressionnera vos clients et partenaires.
+                            </p>
+                            
+                            <a href="https://www.chantierfilm.com/prise-de-rendez-vous" class="main-appointment-btn pulse-button">
+                                <span class="btn-text">Prenez Rendez-vous</span>
+                                <span class="btn-icon"><i class="fa fa-calendar-check"></i></span>
+                            </a>
+                            
+                            <div class="content_summary">
+                                <h3 class="summary_title">Échangez avec Nos Experts</h3>
+                                <p class="summary_text">
+                                    Planifiez un entretien visio avec l'un de nos spécialistes en captation audiovisuelle. Lors de cet échange, nous prendrons le temps d'analyser en détail vos besoins, d'explorer les différentes options adaptées à votre projet et de vous conseiller sur les meilleures solutions. À l'issue de cette consultation, vous recevrez une proposition tarifaire sur mesure, parfaitement ajustée à vos exigences techniques et budgétaires.
+                                </p>
+                                
+                                <div class="elegant-separator">
+                                    <span class="separator-line"></span>
+                                    <span class="separator-icon"><i class="fa fa-circle"></i></span>
+                                    <span class="separator-line"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="cta_form_container">
+                            <div class="form_header">
+                                <h3>Prêt à Immortaliser Votre Chantier?</h3>
+                                <p>Contactez-nous pour une proposition personnalisée</p>
+                            </div>
+                            
+                            <form class="contact_form" action="#" method="post">
+                                <div class="form_row">
+                                    <div class="form_group">
+                                        <input type="text" class="form_input" name="name" placeholder="*Nom" required>
+                                    </div>
+                                    <div class="form_group">
+                                        <input type="email" class="form_input" name="email" placeholder="*Email" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form_group">
+                                    <input type="tel" class="form_input" name="phone" placeholder="Téléphone">
+                                </div>
+                                
+                                <div class="form_group">
+                                    <textarea class="form_textarea" name="description" placeholder="Décrivez brièvement votre projet de construction..."></textarea>
+                                </div>
+                                
+                                <div class="additional_info">
+                                    <p>
+                                        Notre équipe s'engage à vous répondre sous 48h ouvrées. Chaque demande est traitée avec soin pour vous proposer une solution parfaitement adaptée à votre projet. N'hésitez pas à détailler vos attentes pour une proposition plus précise.
+                                    </p>
+                                </div>
+                                
+                                <button type="submit" class="form_submit pulse-animation">
+                                    Demander un Devis Gratuit
+                                </button>
+                            </form>
+                            
+                            <div class="trustbadges">
+                                <div class="badge">
+                                    <i class="fa fa-file"></i>
+                                    <span>Devis gratuit</span>
+                                </div>
+                                <div class="badge">
+                                    <i class="fa fa-check-circle"></i>
+                                    <span>Sans engagement</span>
+                                </div>
+                                <div class="badge">
+                                    <i class="fa fa-lock"></i>
+                                    <span>Données sécurisées</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="background-element wave-1"></div>
+        <div class="background-element dots-pattern"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer_text">
+                        © 2024 Chantier Film - Spécialiste en documentation visuelle de chantiers
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // JavaScript pour les animations et interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Supprimer les éléments Odoo indésirables si présents
+            let duplicateHeader = document.querySelector('header#top + header');
+            if (duplicateHeader) {
+                duplicateHeader.remove();
+            }
+            
+            document.querySelectorAll('header div:empty, nav div:empty').forEach(el => el.remove());
+            
+            let logo = document.querySelector('.navbar-brand, .o_menu_brand, .o_header_logo');
+            if (logo) {
+                logo.style.display = 'block';
+                logo.style.margin = '0 auto';
+            }
+
+            // Animation des éléments du header
+            setTimeout(function() {
+                var animatedElements = document.querySelectorAll('.animate-element, .animate-feature, .animate-image');
+                animatedElements.forEach(function(el) {
+                    el.classList.add('animated');
+                });
+            }, 100);
+            
+            // Carrousel de témoignages
+            var currentSlide = 0;
+            var testimonialSlides = document.querySelectorAll('.testimonial-slide');
+            var slideCount = testimonialSlides.length;
+            var dots = document.querySelectorAll('.dot');
+            var testimonialInterval;
+            var isAnimating = false;
+            
+            function showSlide(index) {
+                if (isAnimating || currentSlide === index) return;
+                isAnimating = true;
+                
+                testimonialSlides[index].style.transform = 'translateY(20px)';
+                testimonialSlides[index].style.opacity = '0';
+                
+                testimonialSlides[currentSlide].classList.remove('active');
+                testimonialSlides[currentSlide].style.transform = 'translateY(-20px)';
+                testimonialSlides[currentSlide].style.opacity = '0';
+                
+                setTimeout(function() {
+                    testimonialSlides[index].classList.add('active');
+                    testimonialSlides[index].style.transform = 'translateY(0)';
+                    testimonialSlides[index].style.opacity = '1';
+                    
+                    dots.forEach(function(dot) {
+                        dot.classList.remove('active');
+                    });
+                    dots[index].classList.add('active');
+                    
+                    currentSlide = index;
+                    
+                    setTimeout(function() {
+                        isAnimating = false;
+                    }, 800);
+                }, 100);
+            }
+            
+            function nextSlide() {
+                if (isAnimating) return;
+                var nextIndex = (currentSlide + 1) % slideCount;
+                showSlide(nextIndex);
+            }
+            
+            function startCarousel() {
+                testimonialInterval = setInterval(nextSlide, 8000);
+            }
+            
+            dots.forEach(function(dot, index) {
+                dot.addEventListener('click', function() {
+                    if (isAnimating) return;
+                    clearInterval(testimonialInterval);
+                    showSlide(index);
+                    startCarousel();
+                });
+            });
+            
+            startCarousel();
+
+            // Animation des sections au scroll
+            function isElementInViewport(el) {
+                var rect = el.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            function handleScroll() {
+                var animatedElements = document.querySelectorAll('.animate-section, .animate-card, .animate-solution');
+                
+                animatedElements.forEach(function(el) {
+                    if (isElementInViewport(el) && !el.classList.contains('in-view')) {
+                        el.classList.add('in-view');
+                    }
+                });
+            }
+            
+            var challengeCards = document.querySelectorAll('.animate-card');
+            challengeCards.forEach(function(card, index) {
+                card.style.transitionDelay = (0.1 + index * 0.1) + 's';
+            });
+            
+            var solutionCards = document.querySelectorAll('.animate-solution');
+            solutionCards.forEach(function(card, index) {
+                card.style.transitionDelay = (0.1 + index * 0.1) + 's';
+            });
+            
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
+
+            // Animation Notre Offre
+            const ofTitleObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('of_animated');
+                        ofTitleObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -10% 0px'
+            });
+            
+            document.querySelectorAll('.of_animate').forEach(element => {
+                ofTitleObserver.observe(element);
+            });
+            
+            const ofCardObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.dataset.delay || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('of_animated');
+                        }, delay);
+                        ofCardObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -5% 0px'
+            });
+            
+            document.querySelectorAll('.of_animate_card').forEach(card => {
+                ofCardObserver.observe(card);
+            });
+
+            // Slider avant/après
+            initBeforeAfterSlider();
+            
+            function initBeforeAfterSlider() {
+                const slider = document.querySelector('.comparison_slider');
+                const after = document.querySelector('.comparison_after');
+                const container = document.querySelector('.comparison_wrapper');
+                
+                if (!slider || !after || !container) return;
+                
+                let isActive = false;
+                
+                const moveSlider = (e) => {
+                    if (!isActive) return;
+                    
+                    e.preventDefault();
+                    
+                    let positionPercent;
+                    
+                    if (e.type === 'mousemove') {
+                        const rect = container.getBoundingClientRect();
+                        const position = e.clientX - rect.left;
+                        positionPercent = (position / container.offsetWidth) * 100;
+                    } else if (e.type === 'touchmove') {
+                        const touch = e.touches[0];
+                        const rect = container.getBoundingClientRect();
+                        const position = touch.clientX - rect.left;
+                        positionPercent = (position / container.offsetWidth) * 100;
+                    }
+                    
+                    positionPercent = Math.max(0, Math.min(positionPercent, 100));
+                    
+                    slider.style.left = `${positionPercent}%`;
+                    after.style.clipPath = `inset(0 ${100 - positionPercent}% 0 0)`;
+                };
+                
+                const startMoving = (e) => {
+                    isActive = true;
+                    moveSlider(e);
+                    container.classList.add('active');
+                };
+                
+                const stopMoving = () => {
+                    isActive = false;
+                    container.classList.remove('active');
+                };
+                
+                slider.addEventListener('mousedown', startMoving);
+                container.addEventListener('mousemove', moveSlider);
+                container.addEventListener('mouseup', stopMoving);
+                container.addEventListener('mouseleave', stopMoving);
+                
+                slider.addEventListener('touchstart', startMoving);
+                container.addEventListener('touchmove', moveSlider);
+                container.addEventListener('touchend', stopMoving);
+                
+                container.addEventListener('click', (e) => {
+                    if (e.target === slider || e.target.closest('.slider_button')) return;
+                    
+                    const rect = container.getBoundingClientRect();
+                    const position = e.clientX - rect.left;
+                    const positionPercent = (position / container.offsetWidth) * 100;
+                    
+                    slider.style.left = `${positionPercent}%`;
+                    after.style.clipPath = `inset(0 ${100 - positionPercent}% 0 0)`;
+                });
+            }
+
+            // Animation du processus
+            function animateProcessElements() {
+                var animatedElements = document.querySelectorAll('.cf_animate-process');
+                
+                animatedElements.forEach(function(element) {
+                    if (isElementInViewport(element)) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            setTimeout(animateProcessElements, 300);
+            window.addEventListener('scroll', animateProcessElements);
+
+            // Animation des éléments CTA
+            setTimeout(function() {
+                var ctaElements = document.querySelectorAll('.cta_section .animate-element');
+                ctaElements.forEach(function(el) {
+                    el.style.opacity = '1';
+                });
+            }, 300);
+
+            // Gestion du formulaire
+            const form = document.querySelector('.contact_form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Ici vous pouvez ajouter la logique d'envoi du formulaire
+                    alert('Merci pour votre demande ! Nous vous recontacterons sous 48h.');
+                    
+                    // Réinitialiser le formulaire
+                    form.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

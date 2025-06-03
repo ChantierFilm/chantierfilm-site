@@ -6,28 +6,180 @@
     <title>Page Protégée - Chantier Film</title>
     <meta name="description" content="Accès sécurisé aux contenus privés de Chantier Film">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="asset/icon.webp">
+    <link rel="shortcut icon" type="image/webp" href="asset/icon.webp">
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- CryptoJS pour MD5 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     
     <!-- CSS personnalisé -->
     <link rel="stylesheet" href="styles.css">
     
+    <!-- Styles supplémentaires pour le header -->
     <style>
+        .main-header {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #FCFCFC;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .menu-hamburger {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #212125;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-hamburger:hover {
+            background-color: #E0E8F4;
+            color: #0055FF;
+        }
+        
+        .logo-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .logo-container img {
+            height: 70px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-container img:hover {
+            transform: scale(1.05);
+        }
+        
+        .menu-spacer {
+            width: 50px;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: #FCFCFC;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transition: left 0.3s ease;
+            padding: 80px 0 20px;
+        }
+        
+        .mobile-menu.open {
+            left: 0;
+        }
+        
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #212125;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-close:hover {
+            background-color: #E0E8F4;
+            color: #0055FF;
+        }
+        
+        .menu-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .menu-items li {
+            border-bottom: 1px solid #E0E8F4;
+        }
+        
+        .menu-items a {
+            display: block;
+            padding: 20px 30px;
+            color: #212125;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-items a:hover {
+            background-color: #E0E8F4;
+            color: #0055FF;
+            transform: translateX(10px);
+        }
+        
+        .menu-items a.active {
+            background-color: #E0E8F4;
+            color: #0055FF;
+        }
+        
+        .menu-items a i {
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+        }
+
         /* Styles spécifiques à la page de connexion */
         .login-wrapper {
-            min-height: 100vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, var(--color-blue-lightest) 0%, var(--color-white) 100%);
             position: relative;
             overflow: hidden;
+            padding: 60px 0;
         }
         
         .login-container {
@@ -201,65 +353,169 @@
             opacity: 1;
             transform: translateY(0);
         }
-        
-        /* Éléments décoratifs */
-        .bg-decoration {
-            position: absolute;
-            z-index: 1;
-            opacity: 0.1;
+
+        /* Footer styles */
+        .footer_section {
+            padding: 50px 0 40px;
+            background-color: #2C2C30;
+            color: #FFFFFF;
+            text-align: center;
         }
         
-        .bg-decoration.dots-1 {
-            top: 10%;
-            right: 10%;
-            width: 100px;
-            height: 100px;
-            background-image: radial-gradient(var(--color-blue-primary) 2px, transparent 2px);
-            background-size: 12px 12px;
+        .footer_logo_container {
+            margin-bottom: 20px;
         }
         
-        .bg-decoration.dots-2 {
-            bottom: 15%;
-            left: 15%;
-            width: 80px;
-            height: 80px;
-            background-image: radial-gradient(var(--color-blue-dark) 1px, transparent 1px);
-            background-size: 8px 8px;
+        .footer_linkedin_link {
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
         
-        .floating-element {
-            position: absolute;
-            background-color: var(--color-blue-primary);
+        .footer_linkedin_icon {
+            width: 50px;
+            height: 50px;
+            background-color: #FFFFFF;
             border-radius: 50%;
-            opacity: 0.1;
-            animation: float 6s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         
-        .floating-1 {
-            width: 20px;
-            height: 20px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
+        .footer_linkedin_icon i {
+            font-size: 24px;
+            color: #0077B5;
+            transition: all 0.3s ease;
         }
         
-        .floating-2 {
-            width: 15px;
-            height: 15px;
-            top: 60%;
-            right: 20%;
-            animation-delay: 2s;
+        .footer_linkedin_link:hover .footer_linkedin_icon {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background-color: #0077B5;
         }
         
-        .floating-3 {
-            width: 25px;
-            height: 25px;
-            bottom: 30%;
-            left: 20%;
-            animation-delay: 4s;
+        .footer_linkedin_link:hover .footer_linkedin_icon i {
+            color: #FFFFFF;
         }
         
-        @media (max-width: 576px) {
+        .footer_company_name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            font-family: var(--font-family);
+        }
+        
+        .footer_contact_info {
+            margin-bottom: 25px;
+        }
+        
+        .footer_address {
+            font-size: 1rem;
+            color: #B8B8B8;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .footer_contact_links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .footer_phone,
+        .footer_email {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .footer_phone:hover,
+        .footer_email:hover {
+            color: #0055FF;
+            text-decoration: none;
+        }
+        
+        .footer_separator {
+            color: #B8B8B8;
+            font-size: 1rem;
+            margin: 0 5px;
+        }
+        
+        .footer_copyright {
+            font-size: 0.9rem;
+            color: #888888;
+            margin: 0;
+            line-height: 1.4;
+            border-top: 1px solid #404040;
+            padding-top: 20px;
+        }
+        
+        /* Force white background for header even in dark mode */
+        @media (prefers-color-scheme: dark) {
+            .main-header {
+                background-color: #FCFCFC !important;
+            }
+            
+            .mobile-menu {
+                background-color: #FCFCFC !important;
+            }
+            
+            .menu-hamburger,
+            .menu-close,
+            .menu-items a {
+                color: #212125 !important;
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .logo-container img {
+                height: 60px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .logo-container img {
+                height: 55px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            .logo-container img {
+                height: 50px;
+            }
+            
+            .mobile-menu {
+                width: 280px;
+                left: -280px;
+            }
+            
+            .main-header {
+                padding: 15px 0;
+            }
+            
+            .footer_contact_links {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .footer_separator {
+                display: none;
+            }
+            
             .login-container {
                 padding: 40px 30px;
                 margin: 20px;
@@ -275,58 +531,127 @@
                 font-size: 1.8rem;
             }
         }
+        
+        @media (max-width: 576px) {
+            .logo-container img {
+                height: 45px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-container img {
+                height: 40px;
+            }
+            
+            .mobile-menu {
+                width: 260px;
+                left: -260px;
+            }
+            
+            .main-header {
+                padding: 12px 0;
+            }
+            
+            .footer_linkedin_icon {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .footer_linkedin_icon i {
+                font-size: 20px;
+            }
+            
+            .footer_company_name {
+                font-size: 1.3rem;
+                margin-bottom: 18px;
+            }
+        }
     </style>
 </head>
 <body>
+    
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <button class="menu-hamburger" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="logo-container">
+                <img src="asset/title.webp" alt="Chantier Film - Logo" loading="lazy">
+            </div>
+            
+            <div class="menu-spacer"></div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu" id="mobileMenu">
+        <button class="menu-close" id="menuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <ul class="menu-items">
+            <li>
+                <a href="../" class="active">
+                    <i class="fas fa-home"></i>
+                    Accueil
+                </a>
+            </li>
+        </ul>
+    </nav>
+
     <!-- Page de connexion -->
     <div class="login-wrapper" id="loginPage">
-        <!-- Éléments décoratifs -->
-        <div class="bg-decoration dots-1"></div>
-        <div class="bg-decoration dots-2"></div>
-        <div class="floating-element floating-1"></div>
-        <div class="floating-element floating-2"></div>
-        <div class="floating-element floating-3"></div>
-        
-        <div class="login-container">
-            <div class="login-header">
-                <div class="lock-icon">
-                    <i class="fa fa-lock"></i>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8 col-sm-10">
+                    <div class="login-container">
+                        <div class="login-header">
+                            <div class="lock-icon">
+                                <i class="fa fa-lock"></i>
+                            </div>
+                            <h1 class="login-title">Accès Sécurisé</h1>
+                            <p class="login-subtitle">Veuillez entrer votre mot de passe pour accéder au contenu privé</p>
+                        </div>
+                        
+                        <div class="error-message" id="errorMessage">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            Mot de passe incorrect. Veuillez réessayer.
+                        </div>
+                        
+                        <form class="password-form" id="passwordForm">
+                            <div class="password-group">
+                                <input 
+                                    type="password" 
+                                    class="password-input" 
+                                    id="passwordInput" 
+                                    placeholder="Entrez votre mot de passe"
+                                    required
+                                    autocomplete="current-password"
+                                >
+                                <button type="button" class="password-toggle" id="passwordToggle">
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                            </div>
+                            
+                            <button type="submit" class="login-button" id="loginButton">
+                                <i class="fa fa-spinner loading-spinner" id="loadingSpinner"></i>
+                                <span id="buttonText">Valider</span>
+                            </button>
+                        </form>
+                        
+                        <div class="text-center">
+                            <small style="color: var(--color-blue-dark); opacity: 0.7;">
+                                <i class="fa fa-shield-alt"></i>
+                                Connexion sécurisée
+                            </small>
+                        </div>
+                    </div>
                 </div>
-                <h1 class="login-title">Accès Sécurisé</h1>
-                <p class="login-subtitle">Veuillez entrer votre mot de passe pour accéder au contenu privé</p>
-            </div>
-            
-            <div class="error-message" id="errorMessage">
-                <i class="fa fa-exclamation-triangle"></i>
-                Mot de passe incorrect. Veuillez réessayer.
-            </div>
-            
-            <form class="password-form" id="passwordForm">
-                <div class="password-group">
-                    <input 
-                        type="password" 
-                        class="password-input" 
-                        id="passwordInput" 
-                        placeholder="Entrez votre mot de passe"
-                        required
-                        autocomplete="current-password"
-                    >
-                    <button type="button" class="password-toggle" id="passwordToggle">
-                        <i class="fa fa-eye"></i>
-                    </button>
-                </div>
-                
-                <button type="submit" class="login-button" id="loginButton">
-                    <i class="fa fa-spinner loading-spinner" id="loadingSpinner"></i>
-                    <span id="buttonText">Valider</span>
-                </button>
-            </form>
-            
-            <div class="text-center">
-                <small style="color: var(--color-blue-dark); opacity: 0.7;">
-                    <i class="fa fa-shield-alt"></i>
-                    Connexion sécurisée
-                </small>
             </div>
         </div>
     </div>
@@ -630,41 +955,48 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <!-- Logo LinkedIn -->
+                    <div class="footer_logo_container">
+                        <a href="https://www.linkedin.com/company/chantier-film" target="_blank" rel="noopener noreferrer" class="footer_linkedin_link">
+                            <div class="footer_linkedin_icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Nom de l'entreprise -->
+                    <h3 class="footer_company_name">CHANTIER FILM</h3>
+                    
+                    <!-- Informations de contact -->
+                    <div class="footer_contact_info">
+                        <p class="footer_address">39 rue Jean Mermoz • 88190 Golbey • France</p>
+                        <div class="footer_contact_links">
+                            <a href="tel:+33651301893" class="footer_phone">+33 6 51 30 18 93</a>
+                            <span class="footer_separator">•</span>
+                            <a href="mailto:contact@chantierfilm.com" class="footer_email">contact@chantierfilm.com</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Copyright -->
+                    <p class="footer_copyright">
+                        Copyright © Chantier Film - Marque déposée et exploitée par Nuit Blanche Production
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Charger le hash MD5 depuis pw.json
-        async function loadPasswordHash() {
-            try {
-                const response = await fetch('pw.json');
-                if (!response.ok) {
-                    throw new Error('Erreur chargement pw.json');
-                }
-                const data = await response.json();
-                console.log('Hash chargé:', data.password); // Pour debug
-                return data.password;
-            } catch (err) {
-                console.error('Erreur lors du chargement du mot de passe:', err);
-                return null;
-            }
-        }
-
-        // Vérifier le mot de passe avec MD5
-        async function verifyPassword(inputPassword) {
-            const expectedHash = await loadPasswordHash();
-            if (!expectedHash) {
-                console.error('Impossible de charger le hash attendu');
-                return false;
-            }
-            
-            // Générer le hash MD5 du mot de passe saisi
-            const inputHash = CryptoJS.MD5(inputPassword).toString();
-            console.log('Hash saisi:', inputHash); // Pour debug
-            console.log('Hash attendu:', expectedHash); // Pour debug
-            
-            return inputHash === expectedHash;
-        }
+        // Mot de passe en dur
+        const CORRECT_PASSWORD = "TEST123";
 
         // Afficher le contenu protégé
         function showProtectedContent() {
@@ -722,12 +1054,34 @@
             const passwordInput = document.getElementById('passwordInput');
             const passwordToggle = document.getElementById('passwordToggle');
 
-            // Vérifier que CryptoJS est chargé
-            if (typeof CryptoJS === 'undefined') {
-                console.error('CryptoJS n\'est pas chargé !');
-                alert('Erreur: Bibliothèque de cryptage non disponible');
-                return;
+            // Gestion du menu mobile
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const menuClose = document.getElementById('menuClose');
+
+            function openMenu() {
+                mobileMenu.classList.add('open');
+                menuOverlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
             }
+
+            function closeMenu() {
+                mobileMenu.classList.remove('open');
+                menuOverlay.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            menuToggle.addEventListener('click', openMenu);
+            menuClose.addEventListener('click', closeMenu);
+            menuOverlay.addEventListener('click', closeMenu);
+
+            // Fermer le menu lors de l'appui sur Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                    closeMenu();
+                }
+            });
 
             // Basculer la visibilité du mot de passe
             passwordToggle.addEventListener('click', function() {
@@ -763,9 +1117,8 @@
                     // Délai artificiel pour l'UX
                     await new Promise(resolve => setTimeout(resolve, 800));
                     
-                    const isValid = await verifyPassword(password);
-                    
-                    if (isValid) {
+                    // Vérification simple du mot de passe
+                    if (password === CORRECT_PASSWORD) {
                         console.log('Mot de passe correct !');
                         showProtectedContent();
                     } else {

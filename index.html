@@ -19,14 +19,14 @@
     <!-- Styles supplémentaires pour le header -->
     <style>
         .main-header {
-            position: fixed;
+            position: relative;
             top: 0;
             left: 0;
             width: 100%;
             background-color: #FCFCFC;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
-            padding: 15px 0;
+            padding: 20px 0;
             transition: all 0.3s ease;
         }
         
@@ -62,7 +62,7 @@
         }
         
         .logo-container img {
-            height: 40px;
+            height: 70px;
             width: auto;
             transition: all 0.3s ease;
         }
@@ -149,22 +149,21 @@
             transition: all 0.3s ease;
         }
         
-        .menu-items a:hover,
-        .menu-items a.active {
+        .menu-items a:hover {
             background-color: #E0E8F4;
             color: #0055FF;
             transform: translateX(10px);
+        }
+        
+        .menu-items a.active {
+            background-color: #E0E8F4;
+            color: #0055FF;
         }
         
         .menu-items a i {
             margin-right: 15px;
             width: 20px;
             text-align: center;
-        }
-        
-        /* Adjustment for body padding to account for fixed header */
-        body {
-            padding-top: 80px;
         }
         
         /* Force white background for header even in dark mode */
@@ -185,13 +184,25 @@
         }
         
         /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .logo-container img {
+                height: 60px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .logo-container img {
+                height: 55px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .header-container {
                 padding: 0 15px;
             }
             
             .logo-container img {
-                height: 35px;
+                height: 50px;
             }
             
             .mobile-menu {
@@ -199,14 +210,20 @@
                 left: -280px;
             }
             
-            body {
-                padding-top: 70px;
+            .main-header {
+                padding: 15px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo-container img {
+                height: 45px;
             }
         }
         
         @media (max-width: 480px) {
             .logo-container img {
-                height: 30px;
+                height: 40px;
             }
             
             .mobile-menu {
@@ -214,8 +231,8 @@
                 left: -260px;
             }
             
-            body {
-                padding-top: 65px;
+            .main-header {
+                padding: 12px 0;
             }
         }
     </style>

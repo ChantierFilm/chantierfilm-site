@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Protégée - Chantier Film</title>
-    <meta name="description" content="Accès sécurisé aux contenus privés de Chantier Film">
+    <title>Sicovad - Épinal | Chantier Film</title>
+    <meta name="description" content="Accès sécurisé aux contenus privés du chantier Sicovad">
     
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="asset/icon.webp">
@@ -997,52 +997,24 @@
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Crypto-JS pour MD5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     
     <script>
-        // Charger le mot de passe depuis pw.json
-        async function loadPassword() {
-            try {
-                console.log('🔍 Tentative de chargement de pw.json...');
-                
-                const response = await fetch('pw.json');
-                console.log('📡 Statut de la réponse:', response.status, response.statusText);
-                console.log('✅ Response OK:', response.ok);
-                
-                if (!response.ok) {
-                    throw new Error(`Erreur HTTP: ${response.status} ${response.statusText}`);
-                }
-                
-                const data = await response.json();
-                console.log('📄 Contenu du fichier pw.json:', data);
-                console.log('🔑 Mot de passe extrait:', data.password);
-                console.log('🔍 Type du mot de passe:', typeof data.password);
-                
-                if (!data.password) {
-                    console.error('❌ data.password est undefined ou vide !');
-                    return null;
-                }
-                
-                return data.password;
-            } catch (err) {
-                console.error('💥 Erreur détaillée lors du chargement:', err);
-                console.error('📍 Type d\'erreur:', err.name);
-                console.error('📝 Message d\'erreur:', err.message);
-                return null;
-            }
+        // Hash MD5 du mot de passe
+        const CORRECT_PASSWORD_HASH = "d7a471826b8388d43569a74303fca3f0";
+
+        // Fonction pour hacher le mot de passe avec MD5
+        function hashPassword(password) {
+            return CryptoJS.MD5(password).toString();
         }
 
         // Vérifier le mot de passe
-        async function verifyPassword(inputPassword) {
-            const correctPassword = await loadPassword();
-            if (!correctPassword) {
-                console.error('Impossible de charger le mot de passe');
-                return false;
-            }
-            
-            console.log('Mot de passe saisi:', inputPassword); // Pour debug
-            console.log('Mot de passe attendu:', correctPassword); // Pour debug
-            
-            return inputPassword === correctPassword;
+        function verifyPassword(inputPassword) {
+            const inputHash = hashPassword(inputPassword);
+            console.log('Hash MD5 du mot de passe saisi:', inputHash);
+            console.log('Hash MD5 attendu:', CORRECT_PASSWORD_HASH);
+            return inputHash === CORRECT_PASSWORD_HASH;
         }
 
         // Afficher le contenu protégé
@@ -1164,8 +1136,8 @@
                     // Délai artificiel pour l'UX
                     await new Promise(resolve => setTimeout(resolve, 800));
                     
-                    // Vérification du mot de passe depuis le fichier JSON
-                    const isValid = await verifyPassword(password);
+                    // Vérification du mot de passe avec MD5
+                    const isValid = verifyPassword(password);
                     
                     if (isValid) {
                         console.log('Mot de passe correct !');

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Protégée - Chantier Film</title>
@@ -13,6 +12,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CryptoJS pour MD5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     
     <!-- CSS personnalisé -->
     <link rel="stylesheet" href="styles.css">
@@ -178,6 +179,12 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
         }
         
         .protected-content {
@@ -627,38 +634,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Fonction pour hasher en SHA-256
-        async function sha256(message) {
-            const msgBuffer = new TextEncoder().encode(message);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-            return hashHex;
-        }
-
-        // Charger le hash depuis pw.json
+        // Charger le hash MD5 depuis pw.json
         async function loadPasswordHash() {
             try {
                 const response = await fetch('pw.json');
                 if (!response.ok) {
-                    throw new Error('Impossible de charger le fichier de mot de passe');
+                    throw new Error('Erreur chargement pw.json');
                 }
                 const data = await response.json();
+                console.log('Hash chargé:', data.password); // Pour debug
                 return data.password;
-            } catch (error) {
-                console.error('Erreur lors du chargement du mot de passe:', error);
+            } catch (err) {
+                console.error('Erreur lors du chargement du mot de passe:', err);
                 return null;
             }
         }
 
-        // Vérifier le mot de passe
+        // Vérifier le mot de passe avec MD5
         async function verifyPassword(inputPassword) {
             const expectedHash = await loadPasswordHash();
             if (!expectedHash) {
+                console.error('Impossible de charger le hash attendu');
                 return false;
             }
             
-            const inputHash = await sha256(inputPassword);
+            // Générer le hash MD5 du mot de passe saisi
+            const inputHash = CryptoJS.MD5(inputPassword).toString();
+            console.log('Hash saisi:', inputHash); // Pour debug
+            console.log('Hash attendu:', expectedHash); // Pour debug
+            
             return inputHash === expectedHash;
         }
 
@@ -689,18 +693,6 @@
             }, 500);
         }
 
-        // Animation shake pour les erreurs
-        const shakeKeyframes = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                25% { transform: translateX(-5px); }
-                75% { transform: translateX(5px); }
-            }
-        `;
-        const styleSheet = document.createElement('style');
-        styleSheet.textContent = shakeKeyframes;
-        document.head.appendChild(styleSheet);
-
         // Masquer le message d'erreur
         function hideError() {
             const errorMessage = document.getElementById('errorMessage');
@@ -729,6 +721,13 @@
             const passwordForm = document.getElementById('passwordForm');
             const passwordInput = document.getElementById('passwordInput');
             const passwordToggle = document.getElementById('passwordToggle');
+
+            // Vérifier que CryptoJS est chargé
+            if (typeof CryptoJS === 'undefined') {
+                console.error('CryptoJS n\'est pas chargé !');
+                alert('Erreur: Bibliothèque de cryptage non disponible');
+                return;
+            }
 
             // Basculer la visibilité du mot de passe
             passwordToggle.addEventListener('click', function() {
@@ -767,8 +766,10 @@
                     const isValid = await verifyPassword(password);
                     
                     if (isValid) {
+                        console.log('Mot de passe correct !');
                         showProtectedContent();
                     } else {
+                        console.log('Mot de passe incorrect');
                         showError();
                         passwordInput.value = '';
                         passwordInput.focus();

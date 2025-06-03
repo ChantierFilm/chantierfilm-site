@@ -822,13 +822,202 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <p class="footer_text">
-                        © 2024 Chantier Film - Spécialiste en documentation visuelle de chantiers
+                    <!-- Logo LinkedIn -->
+                    <div class="footer_logo_container">
+                        <a href="https://www.linkedin.com/company/chantier-film" target="_blank" rel="noopener noreferrer" class="footer_linkedin_link">
+                            <div class="footer_linkedin_icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Nom de l'entreprise -->
+                    <h3 class="footer_company_name">CHANTIER FILM</h3>
+                    
+                    <!-- Informations de contact -->
+                    <div class="footer_contact_info">
+                        <p class="footer_address">39 rue Jean Mermoz • 88190 Golbey • France</p>
+                        <div class="footer_contact_links">
+                            <a href="tel:+33651301893" class="footer_phone">+33 6 51 30 18 93</a>
+                            <span class="footer_separator">•</span>
+                            <a href="mailto:contact@chantierfilm.com" class="footer_email">contact@chantierfilm.com</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Copyright -->
+                    <p class="footer_copyright">
+                        Copyright © Chantier Film - Marque déposée et exploitée par Nuit Blanche Production
                     </p>
                 </div>
             </div>
         </div>
     </footer>
+    
+    <!-- Styles supplémentaires pour le nouveau footer -->
+    <style>
+        .footer_section {
+            padding: 50px 0 40px;
+            background-color: #2C2C30;
+            color: #FFFFFF;
+            text-align: center;
+        }
+        
+        .footer_logo_container {
+            margin-bottom: 20px;
+        }
+        
+        .footer_linkedin_link {
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer_linkedin_icon {
+            width: 50px;
+            height: 50px;
+            background-color: #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer_linkedin_icon i {
+            font-size: 24px;
+            color: #0077B5;
+            transition: all 0.3s ease;
+        }
+        
+        .footer_linkedin_link:hover .footer_linkedin_icon {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background-color: #0077B5;
+        }
+        
+        .footer_linkedin_link:hover .footer_linkedin_icon i {
+            color: #FFFFFF;
+        }
+        
+        .footer_company_name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            font-family: var(--font-family);
+        }
+        
+        .footer_contact_info {
+            margin-bottom: 25px;
+        }
+        
+        .footer_address {
+            font-size: 1rem;
+            color: #B8B8B8;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .footer_contact_links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .footer_phone,
+        .footer_email {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .footer_phone:hover,
+        .footer_email:hover {
+            color: #0055FF;
+            text-decoration: none;
+        }
+        
+        .footer_separator {
+            color: #B8B8B8;
+            font-size: 1rem;
+            margin: 0 5px;
+        }
+        
+        .footer_copyright {
+            font-size: 0.9rem;
+            color: #888888;
+            margin: 0;
+            line-height: 1.4;
+            border-top: 1px solid #404040;
+            padding-top: 20px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .footer_section {
+                padding: 40px 0 30px;
+            }
+            
+            .footer_company_name {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .footer_contact_links {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .footer_separator {
+                display: none;
+            }
+            
+            .footer_address {
+                font-size: 0.95rem;
+            }
+            
+            .footer_phone,
+            .footer_email {
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer_section {
+                padding: 35px 0 25px;
+            }
+            
+            .footer_linkedin_icon {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .footer_linkedin_icon i {
+                font-size: 20px;
+            }
+            
+            .footer_company_name {
+                font-size: 1.3rem;
+                margin-bottom: 18px;
+            }
+            
+            .footer_contact_info {
+                margin-bottom: 20px;
+            }
+            
+            .footer_copyright {
+                font-size: 0.85rem;
+                padding-top: 15px;
+            }
+        }
+    </style>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Protégée - Chantier Film</title>
+    <meta name="description" content="Accès sécurisé aux contenus privés de Chantier Film">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS personnalisé -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Styles spécifiques à la page de connexion */
+        .login-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-blue-lightest) 0%, var(--color-white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-container {
+            background: var(--color-white);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(66, 71, 76, 0.15);
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            z-index: 2;
+            border: 1px solid var(--color-blue-lightest);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .login-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .login-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background-color: var(--color-blue-primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .login-subtitle {
+            color: var(--color-blue-dark);
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+        
+        .lock-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--color-blue-lightest);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--color-blue-primary);
+            font-size: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 85, 255, 0.1);
+        }
+        
+        .password-form {
+            margin-bottom: 30px;
+        }
+        
+        .password-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 15px 50px 15px 15px;
+            border: 2px solid var(--color-blue-light);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: var(--font-family);
+            background: var(--color-white);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .password-input:focus {
+            outline: none;
+            border-color: var(--color-blue-primary);
+            box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.1);
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--color-blue-dark);
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .password-toggle:hover {
+            color: var(--color-blue-primary);
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background: var(--color-blue-primary);
+            color: var(--color-white);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: var(--font-family);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 85, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 85, 255, 0.4);
+        }
+        
+        .login-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #c33;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .loading-spinner {
+            display: none;
+            margin-right: 10px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .protected-content {
+            display: none;
+        }
+        
+        .content-wrapper {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .content-wrapper.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Éléments décoratifs */
+        .bg-decoration {
+            position: absolute;
+            z-index: 1;
+            opacity: 0.1;
+        }
+        
+        .bg-decoration.dots-1 {
+            top: 10%;
+            right: 10%;
+            width: 100px;
+            height: 100px;
+            background-image: radial-gradient(var(--color-blue-primary) 2px, transparent 2px);
+            background-size: 12px 12px;
+        }
+        
+        .bg-decoration.dots-2 {
+            bottom: 15%;
+            left: 15%;
+            width: 80px;
+            height: 80px;
+            background-image: radial-gradient(var(--color-blue-dark) 1px, transparent 1px);
+            background-size: 8px 8px;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background-color: var(--color-blue-primary);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-1 {
+            width: 20px;
+            height: 20px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-2 {
+            width: 15px;
+            height: 15px;
+            top: 60%;
+            right: 20%;
+            animation-delay: 2s;
+        }
+        
+        .floating-3 {
+            width: 25px;
+            height: 25px;
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        @media (max-width: 576px) {
+            .login-container {
+                padding: 40px 30px;
+                margin: 20px;
+            }
+            
+            .login-title {
+                font-size: 1.8rem;
+            }
+            
+            .lock-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page de connexion -->
+    <div class="login-wrapper" id="loginPage">
+        <!-- Éléments décoratifs -->
+        <div class="bg-decoration dots-1"></div>
+        <div class="bg-decoration dots-2"></div>
+        <div class="floating-element floating-1"></div>
+        <div class="floating-element floating-2"></div>
+        <div class="floating-element floating-3"></div>
+        
+        <div class="login-container">
+            <div class="login-header">
+                <div class="lock-icon">
+                    <i class="fa fa-lock"></i>
+                </div>
+                <h1 class="login-title">Accès Sécurisé</h1>
+                <p class="login-subtitle">Veuillez entrer votre mot de passe pour accéder au contenu privé</p>
+            </div>
+            
+            <div class="error-message" id="errorMessage">
+                <i class="fa fa-exclamation-triangle"></i>
+                Mot de passe incorrect. Veuillez réessayer.
+            </div>
+            
+            <form class="password-form" id="passwordForm">
+                <div class="password-group">
+                    <input 
+                        type="password" 
+                        class="password-input" 
+                        id="passwordInput" 
+                        placeholder="Entrez votre mot de passe"
+                        required
+                        autocomplete="current-password"
+                    >
+                    <button type="button" class="password-toggle" id="passwordToggle">
+                        <i class="fa fa-eye"></i>
+                    </button>
+                </div>
+                
+                <button type="submit" class="login-button" id="loginButton">
+                    <i class="fa fa-spinner loading-spinner" id="loadingSpinner"></i>
+                    <span id="buttonText">Valider</span>
+                </button>
+            </form>
+            
+            <div class="text-center">
+                <small style="color: var(--color-blue-dark); opacity: 0.7;">
+                    <i class="fa fa-shield-alt"></i>
+                    Connexion sécurisée
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenu protégé -->
+    <div class="protected-content" id="protectedContent">
+        <div class="content-wrapper">
+            <!-- Section Header / Hero -->
+            <section class="s_embed_code o_colored_level pb32 pt32 d-none o_snippet_mobile_invisible d-lg-block text-center o_cc o_cc2 bg-black-15">
+                <div class="s_embed_code_embedded o_not_editable container-fluid">
+                    <style>
+                        /* Import de la police Montserrat */
+                        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+                        .hero-section {
+                            background: transparent;
+                            width: 100%;
+                            margin: 0 auto;
+                            padding: 20px 0;
+                            position: relative;
+                            overflow: hidden;
+                        }
+                        
+                        .futuristic-card {
+                            position: relative;
+                            background: #fcfcfc;
+                            border-radius: 16px;
+                            padding: 30px 40px;
+                            max-width: 800px;
+                            width: 100%;
+                            text-align: center;
+                            box-shadow: 0 0 20px rgba(63, 83, 103, 0.6);
+                            margin: 0 auto;
+                        }
+                        
+                        .futuristic-card h1 {
+                            margin: 0;
+                            font-family: 'Montserrat', sans-serif;
+                            font-size: 2.5rem;
+                            font-weight: 700;
+                            color: #3f5367;
+                            text-transform: uppercase;
+                            letter-spacing: 1px;
+                        }
+                        
+                        .futuristic-card h2 {
+                            margin: 10px 0 0 0;
+                            font-family: 'Montserrat', sans-serif;
+                            font-size: 1.25rem;
+                            font-weight: 400;
+                            color: #4e6d88;
+                            letter-spacing: 0.5px;
+                        }
+                        
+                        .futuristic-underline {
+                            width: 80px;
+                            height: 4px;
+                            margin: 20px auto;
+                            background: linear-gradient(90deg, #3f5367, #4e6d88);
+                            border-radius: 2px;
+                            animation: pulse 2s infinite;
+                        }
+                        
+                        @keyframes pulse {
+                            0%, 100% { transform: scaleX(1); }
+                            50% { transform: scaleX(1.1); }
+                        }
+                        
+                        @media (max-width: 768px) {
+                            .futuristic-card {
+                                padding: 20px;
+                            }
+                            .futuristic-card h1 {
+                                font-size: 2rem;
+                            }
+                            .futuristic-card h2 {
+                                font-size: 1rem;
+                            }
+                            .futuristic-underline {
+                                width: 60px;
+                                height: 3px;
+                                margin: 15px auto;
+                            }
+                        }
+                        
+                        @media (max-width: 768px) {
+                            .hero-section {
+                                display: none;
+                            }
+                        }
+                    </style>
+                    
+                    <section class="hero-section">
+                        <div class="futuristic-card">
+                            <h1>Déchetterie Sicovad - Épinal</h1>
+                            <div class="futuristic-underline"></div>
+                            <h2>Visualisation en temps réel de l'avancement du chantier</h2>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <!-- Section mobile -->
+            <section class="s_embed_code o_colored_level pb32 pt32 bg-o-color-5 d-lg-none o_snippet_desktop_invisible text-center">
+                <div class="s_embed_code_embedded o_not_editable container-fluid">
+                    <style>
+                        .hero-section-mobile {
+                            background: transparent;
+                            width: 100%;
+                            margin: 0 auto;
+                            padding: 10px 0;
+                            position: relative;
+                            overflow: hidden;
+                            display: none;
+                        }
+
+                        .futuristic-card-mobile {
+                            position: relative;
+                            background: #fcfcfc;
+                            border-radius: 8px;
+                            padding: 15px 20px;
+                            max-width: 400px;
+                            width: 100%;
+                            text-align: center;
+                            box-shadow: 0 0 10px rgba(63, 83, 103, 0.6);
+                            margin: 0 auto;
+                        }
+
+                        .futuristic-card-mobile h1 {
+                            margin: 0;
+                            font-family: 'Montserrat', sans-serif;
+                            font-size: 1.25rem;
+                            font-weight: 700;
+                            color: #3f5367;
+                            text-transform: uppercase;
+                            letter-spacing: 0.5px;
+                        }
+
+                        .futuristic-card-mobile h2 {
+                            margin: 5px 0 0 0;
+                            font-family: 'Montserrat', sans-serif;
+                            font-size: 0.7rem;
+                            font-weight: 400;
+                            color: #4e6d88;
+                            letter-spacing: 0.25px;
+                        }
+
+                        .futuristic-underline-mobile {
+                            width: 40px;
+                            height: 2px;
+                            margin: 10px auto;
+                            background: linear-gradient(90deg, #3f5367, #4e6d88);
+                            border-radius: 1px;
+                            animation: pulse 2s infinite;
+                        }
+
+                        @media (max-width: 1279px) {
+                            .hero-section-mobile {
+                                display: block;
+                            }
+                        }
+                        @media (min-width: 1280px) {
+                            .hero-section-mobile {
+                                display: none;
+                            }
+                        }
+                    </style>
+
+                    <section class="hero-section-mobile">
+                        <div class="futuristic-card-mobile">
+                            <h1>Déchetterie Sicovad - Épinal</h1>
+                            <div class="futuristic-underline-mobile"></div>
+                            <h2>Visualisation en temps réel de l'avancement du chantier</h2>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <!-- Section des iframes -->
+            <section class="s_embed_code o_colored_level pt32 o_cc o_cc4 pb112 text-center">
+                <div class="s_embed_code_embedded o_not_editable container-fluid">
+                    <style>
+                        .iframe-container {
+                            position: relative;
+                            overflow: hidden;
+                            width: 100%;
+                            padding-top: calc(36% + 50px);
+                            margin-bottom: 20px;
+                        }
+                        
+                        .iframe-container iframe {
+                            width: 100%;
+                            height: 100%;
+                            border: none;
+                            background-color: #3f5367;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                        }
+                        
+                        @media screen and (max-width: 800px) {
+                            .iframe-container {
+                                padding-top: calc(70% + 100px);
+                            }
+                        }
+                        
+                        @media screen and (min-width: 801px) {
+                            .iframe-container {
+                                width: 90%;
+                                margin-left: 5%;
+                                margin-right: 5%;
+                            }
+                        }
+                    </style>
+                    
+                    <div class="iframe-container">
+                        <iframe src="https://my.tikee.io/iframe/ed4aed2f-0ba3-4298-ba03-205e688b1fa7/gallery/98c158d3-4946-4a35-98d6-c52234d61c46?lang=fr&image_size=original&time_zone=Europe/Brussels&default_tab=single&allowed_viewer_types=single,compare&font_color=fcfcfc&primary_color=4e6d88&secondary_color=303a46&highlight_font_color=fcfcfc&frameBorder=0" allowfullscreen=""></iframe>
+                    </div>
+                    
+                    <div class="iframe-container">
+                        <iframe src="https://my.tikee.io/iframe/ce19fa92-083b-4231-a44f-43db7e995011/gallery/a3ab1996-1399-471a-ad73-37155dd450f6?lang=fr&image_size=original&time_zone=Europe/Brussels&default_tab=single&allowed_viewer_types=single,compare&font_color=fcfcfc&primary_color=4e6d88&secondary_color=303a46&highlight_font_color=fcfcfc&frameBorder=0" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section titre secondaire -->
+            <section class="s_embed_code pt64 pb64 o_colored_level bg-black-15 text-center">
+                <div class="s_embed_code_embedded o_not_editable container">
+                    <style>
+                        .secondary-section {
+                            background: transparent;
+                            width: 100%;
+                            margin: 20px auto;
+                            padding: 15px 0;
+                            position: relative;
+                            overflow: hidden;
+                        }
+
+                        .secondary-card {
+                            position: relative;
+                            background: #fcfcfc;
+                            border-radius: 12px;
+                            padding: 20px 30px;
+                            max-width: 700px;
+                            width: 100%;
+                            text-align: center;
+                            box-shadow: 0 0 15px rgba(63, 83, 103, 0.4);
+                            margin: 0 auto;
+                        }
+
+                        .secondary-card h3 {
+                            margin: 0;
+                            font-family: 'Montserrat', sans-serif;
+                            font-size: 2rem;
+                            font-weight: 700;
+                            color: #3f5367;
+                            letter-spacing: 0.8px;
+                        }
+
+                        .secondary-underline {
+                            width: 60px;
+                            height: 3px;
+                            margin: 15px auto;
+                            background: linear-gradient(90deg, #3f5367, #4e6d88);
+                            border-radius: 2px;
+                            animation: pulse 2s infinite;
+                        }
+
+                        @media (max-width: 768px) {
+                            .secondary-card {
+                                padding: 15px;
+                            }
+                            .secondary-card h3 {
+                                font-size: 1.75rem;
+                            }
+                            .secondary-underline {
+                                width: 50px;
+                                height: 2.5px;
+                                margin: 12px auto;
+                            }
+                        }
+                    </style>
+                    
+                    <section class="secondary-section">
+                        <div class="secondary-card">
+                            <h3>Retrouvez ici les images des précédentes phases</h3>
+                            <div class="secondary-underline"></div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <!-- Section iframe final -->
+            <section class="s_embed_code pt64 pb64 o_colored_level o_cc o_cc4 text-center">
+                <div class="s_embed_code_embedded o_not_editable container-fluid">
+                    <div class="iframe-container">
+                        <iframe src="https://my.tikee.io/iframe/7c359830-9cda-4993-bf07-f007608481f2/gallery/158082dd-e7f8-434d-8b7b-e965cc700b12?lang=fr&image_size=original&time_zone=Europe/Brussels&default_tab=single&allowed_viewer_types=single,compare&font_color=fcfcfc&primary_color=4e6d88&secondary_color=303a46&highlight_font_color=fcfcfc&frameBorder=0" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Fonction pour hasher en SHA-256
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
+
+        // Charger le hash depuis pw.json
+        async function loadPasswordHash() {
+            try {
+                const response = await fetch('pw.json');
+                if (!response.ok) {
+                    throw new Error('Impossible de charger le fichier de mot de passe');
+                }
+                const data = await response.json();
+                return data.password;
+            } catch (error) {
+                console.error('Erreur lors du chargement du mot de passe:', error);
+                return null;
+            }
+        }
+
+        // Vérifier le mot de passe
+        async function verifyPassword(inputPassword) {
+            const expectedHash = await loadPasswordHash();
+            if (!expectedHash) {
+                return false;
+            }
+            
+            const inputHash = await sha256(inputPassword);
+            return inputHash === expectedHash;
+        }
+
+        // Afficher le contenu protégé
+        function showProtectedContent() {
+            const loginPage = document.getElementById('loginPage');
+            const protectedContent = document.getElementById('protectedContent');
+            const contentWrapper = protectedContent.querySelector('.content-wrapper');
+            
+            loginPage.style.display = 'none';
+            protectedContent.style.display = 'block';
+            
+            // Animation d'apparition
+            setTimeout(() => {
+                contentWrapper.classList.add('show');
+            }, 100);
+        }
+
+        // Afficher un message d'erreur
+        function showError() {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.style.display = 'block';
+            
+            // Animation shake
+            errorMessage.style.animation = 'shake 0.5s ease-in-out';
+            setTimeout(() => {
+                errorMessage.style.animation = '';
+            }, 500);
+        }
+
+        // Animation shake pour les erreurs
+        const shakeKeyframes = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                75% { transform: translateX(5px); }
+            }
+        `;
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = shakeKeyframes;
+        document.head.appendChild(styleSheet);
+
+        // Masquer le message d'erreur
+        function hideError() {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.style.display = 'none';
+        }
+
+        // Gérer l'état de chargement
+        function setLoading(isLoading) {
+            const loginButton = document.getElementById('loginButton');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const buttonText = document.getElementById('buttonText');
+            
+            if (isLoading) {
+                loginButton.disabled = true;
+                loadingSpinner.style.display = 'inline-block';
+                buttonText.textContent = 'Vérification...';
+            } else {
+                loginButton.disabled = false;
+                loadingSpinner.style.display = 'none';
+                buttonText.textContent = 'Valider';
+            }
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordForm = document.getElementById('passwordForm');
+            const passwordInput = document.getElementById('passwordInput');
+            const passwordToggle = document.getElementById('passwordToggle');
+
+            // Basculer la visibilité du mot de passe
+            passwordToggle.addEventListener('click', function() {
+                const icon = passwordToggle.querySelector('i');
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.className = 'fa fa-eye-slash';
+                } else {
+                    passwordInput.type = 'password';
+                    icon.className = 'fa fa-eye';
+                }
+            });
+
+            // Masquer l'erreur quand l'utilisateur tape
+            passwordInput.addEventListener('input', function() {
+                hideError();
+            });
+
+            // Gérer la soumission du formulaire
+            passwordForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const password = passwordInput.value.trim();
+                if (!password) {
+                    showError();
+                    return;
+                }
+
+                setLoading(true);
+                hideError();
+
+                try {
+                    // Délai artificiel pour l'UX
+                    await new Promise(resolve => setTimeout(resolve, 800));
+                    
+                    const isValid = await verifyPassword(password);
+                    
+                    if (isValid) {
+                        showProtectedContent();
+                    } else {
+                        showError();
+                        passwordInput.value = '';
+                        passwordInput.focus();
+                    }
+                } catch (error) {
+                    console.error('Erreur lors de la vérification:', error);
+                    showError();
+                } finally {
+                    setLoading(false);
+                }
+            });
+
+            // Focus automatique sur le champ de mot de passe
+            passwordInput.focus();
+        });
+    </script>
+</body>
+</html>

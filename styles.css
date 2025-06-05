@@ -676,6 +676,7 @@
         font-size: 1rem;
     }
 
+
     .cf_process_step {
         flex-direction: column;
         align-items: flex-start;
@@ -697,6 +698,7 @@
     .cf_process_path::before,
     .cf_process_path::after {
         display: none;
+
 
     }
 }
@@ -2656,12 +2658,19 @@ body {
         flex-wrap: wrap;
     }
 
+=======
+
+
     .cta_word {
         display: block;
     }
 }
 
+
+@media (max-width: 767px) {
+=======
 @media (max-width: 991px) {
+
     .cf_process_step {
         flex-direction: column;
         align-items: stretch;
@@ -2698,7 +2707,6 @@ body {
         padding-left: 0;
         padding-right: 0;
     }
-=======
 
 }
 

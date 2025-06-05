@@ -2733,6 +2733,44 @@ body {
     }
 }
 
+@media (max-width: 991px) {
+    .cf_process_step {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 30px;
+        padding-left: 0;
+        padding-bottom: 0;
+    }
+
+    .cf_process_step:last-child {
+        margin-bottom: 0;
+    }
+
+    .cf_step_connector {
+        position: relative;
+        left: 0;
+        margin: 0 auto 10px;
+    }
+
+    .cf_step_content {
+        width: 100%;
+    }
+
+    .cf_step-left::after,
+    .cf_step-right::after,
+    .cf_process_path::before,
+    .cf_process_path::after {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .cf_process_section .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
 .wave-1 {
     position: absolute;
     bottom: 0;

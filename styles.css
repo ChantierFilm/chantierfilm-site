@@ -358,66 +358,6 @@
         font-size: 2.5rem;
     }
     
-    .cf_process_step {
-        margin-bottom: 20px;
-        padding-bottom: 0;
-    }
-    
-    .cf_process_path::before {
-        left: 30px;
-        width: 2px;
-        transform: none;
-    }
-    
-    .cf_process_path::after {
-        left: 30px;
-        transform: none;
-    }
-    
-    .cf_process_step {
-        flex-direction: row;
-        justify-content: flex-start;
-        padding-left: 60px;
-    }
-    
-    .cf_step_content {
-        width: calc(100% - 60px);
-    }
-    
-    .cf_step-left, .cf_step-right {
-        justify-content: flex-start;
-    }
-    
-    .cf_step_number {
-        left: 15px !important;
-        right: auto !important;
-    }
-    
-    .cf_step_connector {
-        position: absolute;
-        left: 0;
-    }
-    
-    .cf_step-left::after, .cf_step-right::after {
-        content: '';
-        position: absolute;
-        height: 2px;
-        width: 30px;
-        left: 30px;
-        top: 40px;
-        background: var(--color-blue-primary);
-        z-index: 1;
-    }
-    
-    .cf_step_icon {
-        width: 60px;
-        height: 60px;
-        margin: 0;
-    }
-    
-    .cf_step_icon i {
-        font-size: 1.8rem;
-    }
 
     .cta_section {
         padding: 70px 0;

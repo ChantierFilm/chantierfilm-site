@@ -1003,6 +1003,7 @@
     <script>
         // Hash MD5 du mot de passe
         const CORRECT_PASSWORD_HASH = "d7a471826b8388d43569a74303fca3f0";
+        const LOCAL_STORAGE_KEY = 'sicovad_access';
 
         // Fonction pour hacher le mot de passe avec MD5
         function hashPassword(password) {
@@ -1073,6 +1074,11 @@
             const passwordInput = document.getElementById('passwordInput');
             const passwordToggle = document.getElementById('passwordToggle');
 
+            const storedAccess = localStorage.getItem(LOCAL_STORAGE_KEY);
+            if (storedAccess === CORRECT_PASSWORD_HASH) {
+                showProtectedContent();
+            }
+
             // Gestion du menu mobile
             const menuToggle = document.getElementById('menuToggle');
             const mobileMenu = document.getElementById('mobileMenu');
@@ -1141,6 +1147,7 @@
                     
                     if (isValid) {
                         console.log('Mot de passe correct !');
+                        localStorage.setItem(LOCAL_STORAGE_KEY, CORRECT_PASSWORD_HASH);
                         showProtectedContent();
                     } else {
                         console.log('Mot de passe incorrect');

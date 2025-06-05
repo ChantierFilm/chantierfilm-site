@@ -1,0 +1,11 @@
+{
+  "name": "chantierfilm-site",
+  "version": "1.0.0",
+  "description": "Static site for Chantier Film",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -2790,3 +2790,30 @@ body {
     border-top: 1px solid #404040;
     padding-top: 20px;
 }
+/* ===== MOBILE IMPROVEMENTS ===== */
+@media (max-width: 480px) {
+    .header_section { padding: 30px 0 40px; }
+    .main_title { font-size: 2rem; }
+    .subtitle { font-size: 1rem; }
+    .header_content { margin-bottom: 2rem; }
+    .logo-container img { height: 50px; }
+    .container { padding-left: 12px; padding-right: 12px; }
+    .mobile-menu { width: 100%; left: -100%; }
+    .mobile-menu.open { left: 0; }
+    .solutions-column, .problems-column { margin-top: 20px; }
+    .challenge_card, .solution_card { padding: 12px; }
+    .challenge_content h4, .solution_content h4 { font-size: 1rem; }
+    .cf_step_content { padding: 15px; }
+    .cf_step_title { font-size: 1rem; }
+    .cta_title { font-size: 1.6rem; }
+    .cta_description { font-size: 0.95rem; }
+    .main-appointment-btn { font-size: 1rem; padding: 15px; width: 100%; }
+    .floating-element { display: none; }
+}
+
+@media (max-width: 360px) {
+    .main_title { font-size: 1.6rem; }
+    .subtitle { font-size: 0.9rem; }
+    .cta_button { padding: 12px 16px; }
+    .header_section { padding: 25px 0 35px; }
+}

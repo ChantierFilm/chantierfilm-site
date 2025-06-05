@@ -552,6 +552,11 @@
         padding-left: 0;
     }
 
+    /* Icons should follow each step on phones */
+    .cf_step-right {
+        flex-direction: column-reverse;
+    }
+
     .cf_step_connector {
         position: relative;
         left: 0;
@@ -640,6 +645,11 @@
         font-size: 1rem;
         top: -15px;
         left: 10px !important;
+        right: auto;
+    }
+
+    .cf_step-right .cf_step_number {
+        right: auto;
     }
     
     .cf_section_title .cf_title-accent {
@@ -2675,6 +2685,18 @@ body {
         width: 100%;
     }
 
+    /* Place icons below each step on tablets */
+    .cf_step-right {
+        flex-direction: column-reverse;
+    }
+
+    /* Ensure numbers appear on the left */
+    .cf_step_number,
+    .cf_step-right .cf_step_number {
+        left: -15px;
+        right: auto;
+    }
+
     .cf_process_step:last-child {
         margin-bottom: 0;
     }
@@ -2698,9 +2720,10 @@ body {
 }
 
 @media (max-width: 576px) {
+    /* Keep some horizontal spacing on phones */
     .cf_process_section .container {
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
 }

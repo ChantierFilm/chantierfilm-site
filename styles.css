@@ -2658,17 +2658,12 @@ body {
         flex-wrap: wrap;
     }
 
-=======
-
-
     .cta_word {
         display: block;
     }
 }
 
 
-@media (max-width: 767px) {
-=======
 @media (max-width: 991px) {
 
     .cf_process_step {

@@ -685,22 +685,17 @@
         padding-left: 0;
         padding-right: 0;
     }
-    
-    .cf_process_step {
-        padding-left: 50px;
-    }
-    
+
     .cf_step_icon {
         width: 45px;
         height: 45px;
     }
-    
+
     .cf_step_icon i {
         font-size: 1.4rem;
     }
-    
+
     .cf_step_content {
-        width: calc(100% - 40px);
         padding: 15px;
     }
     

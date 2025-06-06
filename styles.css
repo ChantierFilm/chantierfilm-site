@@ -696,6 +696,8 @@
     }
 
 
+
+
     /* Ajout pour adapter l'affichage du titre CTA sur mobile */
     .cta_word {
         display: block;
@@ -704,6 +706,7 @@
     .cta_content {
         text-align: center;
     }
+
 
 
     .cf_process_step {
@@ -761,6 +764,7 @@
 }
 
 
+
 /* Saut de ligne activé uniquement sur mobile */
 .mobile-break {
     display: none;
@@ -770,7 +774,7 @@
     .mobile-break {
         display: block;
     }
-}
+
 
 /* ===== CORRECTIONS SPÉCIFIQUES ===== */
 /* Assurer que les icônes Font Awesome s'affichent correctement */

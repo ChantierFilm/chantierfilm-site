@@ -687,6 +687,15 @@
         font-size: 1rem;
     }
 
+    /* Ajout pour adapter l'affichage du titre CTA sur mobile */
+    .cta_word {
+        display: block;
+    }
+
+    .cta_content {
+        text-align: center;
+    }
+
 
     .cf_process_step {
         flex-direction: column;
@@ -730,6 +739,17 @@
 .img-fluid {
     max-width: 100%;
     height: auto;
+}
+
+/* Saut de ligne activé uniquement sur mobile */
+.mobile-break {
+    display: none;
+}
+
+@media (max-width: 576px) {
+    .mobile-break {
+        display: block;
+    }
 }
 
 /* ===== CORRECTIONS SPÉCIFIQUES ===== */

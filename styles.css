@@ -686,27 +686,6 @@
         padding: 15px;
         font-size: 1rem;
     }
-    /* Ajout pour adapter l'affichage du titre CTA sur mobile */
-    .cta_word {
-        display: block;
-    }
-
-    .cta_content {
-        text-align: center;
-    }
-
-
-
-
-    /* Ajout pour adapter l'affichage du titre CTA sur mobile */
-    .cta_word {
-        display: block;
-    }
-
-    .cta_content {
-        text-align: center;
-    }
-
 
 
     .cf_process_step {
@@ -752,29 +731,6 @@
     max-width: 100%;
     height: auto;
 }
-/* Saut de ligne activ uniquement sur mobile */
-.mobile-break {
-    display: none;
-}
-
-@media (max-width: 576px) {
-    .mobile-break {
-        display: block;
-    }
-}
-
-
-
-/* Saut de ligne activé uniquement sur mobile */
-.mobile-break {
-    display: none;
-}
-
-@media (max-width: 576px) {
-    .mobile-break {
-        display: block;
-    }
-
 
 /* ===== CORRECTIONS SPÉCIFIQUES ===== */
 /* Assurer que les icônes Font Awesome s'affichent correctement */
@@ -1776,8 +1732,6 @@ body {
     display: inline-block;
     background: linear-gradient(90deg, var(--color-dark) 0%, var(--color-dark) 50%, var(--color-blue-primary) 50%, var(--color-blue-primary) 100%);
     -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
     color: transparent;
     padding: 0 10px;
 }
